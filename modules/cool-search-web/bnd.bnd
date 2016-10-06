@@ -1,0 +1,4 @@
+Bundle-SymbolicName: it.ecosystem.training.coolsearch.web
+Bundle-Version: 1.0.0
+Export-Package: it.ecosystem.training.coolsearch.web.constants
+Web-ContextPath: /cool-search-web

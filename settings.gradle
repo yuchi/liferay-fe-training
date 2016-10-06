@@ -1,0 +1,13 @@
+buildscript {
+	dependencies {
+		classpath "com.liferay:com.liferay.gradle.plugins.workspace:1.1.0"
+	}
+
+	repositories {
+		maven {
+			url "https://cdn.lfrs.sl/repository.liferay.com/nexus/content/groups/public"
+		}
+	}
+}
+
+apply plugin: "com.liferay.workspace"

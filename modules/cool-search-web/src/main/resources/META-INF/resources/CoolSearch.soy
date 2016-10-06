@@ -1,0 +1,70 @@
+{namespace CoolSearch}
+
+/**
+ * Cool Search Component
+ *
+ * @param? formParams
+ * @param? formURL
+ * @param id
+ * @param keywords
+ * @param keywordsParam
+ * @param results
+ *
+ * Function References
+ *
+ * @param updateSearch
+ * @param prevent
+ */
+{template .render}
+	<div id="{$id}">
+
+		<form action="{$formURL ?: ''}" method="GET">
+
+			{if isNonnull($formParams)}
+				{foreach $param in keys($formParams)}
+					<input
+						name="{$param}"
+						type="hidden"
+						value="{$formParams[$param]}"
+					>
+				{/foreach}
+			{/if}
+
+			<div class="input-group">
+				<input
+					class="form-control input-lg"
+					name="{$keywordsParam}"
+					placeholder="Cerca…"
+					type="text"
+					value="{$keywords}"
+					data-onchange="{$updateSearch}"
+					data-onkeypress="{$updateSearch}"
+					data-onpaste="{$updateSearch}"
+					data-onkeydown="{$updateSearch}"
+				>
+				<span class="input-group-btn">
+					<button class="btn btn-primary" type="submit" data-onclick="{$prevent}">
+						<i class="icon-search"></i>
+					</button>
+				</span>
+			</div>
+
+			<ul class="list-group">
+				{foreach $result in $results}
+					<li class="list-group-item">
+						<h4>
+							{$result.firstName}
+							{$result.middleName}
+							{$result.lastName}
+						</h4>
+						<p>
+							{$result.emailAddress}
+						</p>
+					</li>
+				{/foreach}
+			</ul>
+
+		</form>
+
+	</div>
+{/template}
